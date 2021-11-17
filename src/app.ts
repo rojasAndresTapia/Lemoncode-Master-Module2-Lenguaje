@@ -1,15 +1,23 @@
-const persons = ['Diego', 'Pepe', 'Juan', 'Maria', 'Francisca', 'Paula'];
+const persons:string[] = ['Diego', 'Pepe', 'Juan', 'Maria', 'Francisca', 'Paula'];
 
-const fruits = ['apple', 'orange', 'banana', 'cherry', 'strawberry', 'avocado'];
+const fruits:string[] = ['apple', 'orange', 'banana', 'cherry', 'strawberry', 'avocado'];
 
-const copyPerson = [...persons];
+const copyPerson:string[] = [...persons];
 
-const car = {
+let car: {
+  wheels: number,
+  color: string,
+  model: string,
+  doors: number,
+};
+
+  car = {
   wheels: 4,
   color: 'red',
   model: 'Toyota',
   doors: 2,
 };
+
 
 // 1 head
 const head = (arr) => {
@@ -96,40 +104,63 @@ console.log(isBookRead(books, 'Los Pilares de la Tierra')); // false
 
 // 5 slot machine
 
-class slotMachine {
-  constructor(counter, state1, state2, state3) {
-    this.counter = 0;
-    this.state1 = state1;
-    this.state2 = state2;
-    this.state3 = state3;
-    this.result = '';
-    this.play = function () {
-      this.counter ++;
-      this.state1 = Math.random();
-      this.state1 = !!(this.state1 > 0.5);
-      this.state2 = Math.random();
-      this.state2 = !!(this.state2 > 0.5);
-      this.state3 = Math.random();
-      this.state3 = !!(this.state3 > 0.5);
-      if (
-        this.state1  &&
-        this.state2  &&
-        this.state3 
-      ) {
-        this.result = `Congratulations!!!. You won ${this.counter} coins!!`;
-        this.counter = 0;
-        console.log(this.result);
-        
-      } else {
-        this.result = 'Good luck next time!!';
-        console.log(this.result);
-        
-      }
-    };
-  }
-}
+// type Play = (counter:number,state1: boolean|number, state2:boolean|number, state3:boolean|number, result:string) => void;
 
-const machine1 = new slotMachine();
+interface SlotMachine { 
+  counter:number,
+  play:(state1: boolean|number, state2:boolean|number, state3:boolean|number, result:string) => void,
+
+}  
+let counter: number;
+let state1: boolean|number;
+let state2:boolean|number;
+let state3:boolean|number;
+let result:string;
+
+
+let machine1:SlotMachine = {
+  counter : 0,
+  play : (state1?, state2?, state3?, result?) => {
+     
+     machine1.counter ++;
+     state1 = Math.random();
+     state1 = !!(state1 > 0.5);
+     state2 = Math.random();
+     state2 = !!(state2 > 0.5);
+     state3 = Math.random();
+     state3 = !!(state3 > 0.5);
+     if (
+       state1  &&
+       state2  &&
+       state3 
+     ) {
+       result = `Congratulations!!!. You won ${machine1.counter} coins!!`;
+       machine1.counter = 0;
+       console.log(result);
+       
+     } else {
+       result = 'Good luck next time!! ';
+       console.log(result);
+       
+     }
+   }
+}; 
+  
+
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
 machine1.play();
 machine1.play();
 machine1.play();
